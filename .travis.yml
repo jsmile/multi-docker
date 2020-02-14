@@ -1,9 +1,6 @@
 sudo: required 
 services: 
   - docker 
-branches: 
-  only: 
-    - complex
 before_install: 
   - docker build -t jsmile65/multi-docker -f ./client/Dockerfile.dev 
 script: 
