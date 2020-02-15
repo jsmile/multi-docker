@@ -2,19 +2,19 @@ sudo: required
 services: 
   - docker 
 before_install: 
-  - docker build -t jsmile65/multi-docker -f ./client/Dockerfile.dev 
+  - docker build -t jsmile/multi-docker -f ./client/Dockerfile.dev 
 script: 
-  - docker run -e CI=true jsmile65/multi-docker npm test -- --coverage
+  - docker run -e CI=true jsmile/multi-docker npm test -- --coverage
 after_success: 
-  - docker build jsmile65/multi-client ./client 
-  - docker build jsmile65/multi-nginx ./nginx 
-  - docker build jsmile65/multi-server ./server 
-  - docker build jsmile65/multi-worker ./worker 
+  - docker build jsmile/multi-client ./client 
+  - docker build jsmile/multi-nginx ./nginx 
+  - docker build jsmile/multi-server ./server 
+  - docker build jsmile/multi-worker ./worker 
   # Login docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   # Take those images and push them to docker hub
-  - docker push jsmile65/multi-client 
-  - docker push jsmile65/multi-nginx 
-  - docker push jsmile65/multi-server 
-  - docker push jsmile65/multi-worker 
+  - docker push jsmile/multi-client 
+  - docker push jsmile/multi-nginx 
+  - docker push jsmile/multi-server 
+  - docker push jsmile/multi-worker 
 
