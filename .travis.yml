@@ -13,8 +13,8 @@ after_success:
   # Login docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
   # Take those images and push them to docker hub
-  - docker push jsmile/multi-client 
-  - docker push jsmile/multi-nginx 
-  - docker push jsmile/multi-server 
-  - docker push jsmile/multi-worker 
+  - docker push jsmile/multi-client ./client 
+  - docker push jsmile/multi-nginx ./niginx 
+  - docker push jsmile/multi-server ./server 
+  - docker push jsmile/multi-worker ./worker
 
